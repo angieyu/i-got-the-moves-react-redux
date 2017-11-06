@@ -3,6 +3,7 @@
 <head>
     <title>Redux basic example</title>
     <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <script src="_fakeServerApi/index.js"></script>
     <script src="actions/index.js"></script>
     <script src="reducers/index.js"></script>
 </head>
@@ -24,11 +25,7 @@
 
     document.getElementById('moveAsync')
         .addEventListener('click', function () {
-            setTimeout(
-                function getMove() {
-                    store.dispatch(move());
-                }
-                , 1000); // execute moveAsync() method after 1000 millisecond or 1 second
+            store.dispatch(asyncMove);
         });
 </script>
 <script src="index.js"></script>

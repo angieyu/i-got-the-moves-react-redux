@@ -7,8 +7,8 @@ function getRandomMove(array) {
 }
 
 function getNextMove(currentState, action) {
-    var DEFAULT_STATE = "???";
-
+    var DEFAULT_STATE = {displayMove: "???", loading: false};
+    var nextState = Object.assign({}, currentState);
     if (currentState == undefined) {
         nextState = DEFAULT_STATE;
         return nextState;
@@ -16,13 +16,18 @@ function getNextMove(currentState, action) {
 
     switch (action.type) {
         case 'GROOVE':
-            nextState = getRandomMove(grooves);
-            funcWithError();
+            nextState.displayMove = getRandomMove(grooves);
+            // funcWithError();
             return nextState;
         case 'MOVE':
-            nextState = getRandomMove(myMoves);
+            nextState.displayMove = getRandomMove(myMoves);
+            nextState.loading = false;
+            return nextState;
+        case 'MOVE_LOADING':
+            nextState.loading = true;
             return nextState;
         default:
+            nextState = currentState;
             return nextState;
     }
 }
@@ -40,3 +45,4 @@ function combineReducer(currentState, action) {
 function funcWithError() {
     throw Error('an error is thrown');
 }
+

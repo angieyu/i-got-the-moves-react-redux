@@ -8,10 +8,11 @@ var move = function () {
 
 // Async
 
-var asyncMove = function () {
-    _fakeServerApi.getMove(store.getState().count.result,
+var asyncMove = function (dispatch, state) {
+    dispatch({type: "MOVE_LOADING"});
+    _fakeServerApi.getMove(
         function (data) {
-            store.dispatch({type: 'INCREMENT'});
+            dispatch({type: 'MOVE'});
         }
     );
 };

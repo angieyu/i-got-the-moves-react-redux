@@ -6,6 +6,7 @@
     <script src="_fakeServerApi/index.js"></script>
     <script src="actions/index.js"></script>
     <script src="reducers/index.js"></script>
+    <script src="middlewares/index.js"></script>
 </head>
 <body>
 <div>
@@ -13,6 +14,7 @@
         Gimme one: <span id="display">0</span>
         <button id="groove">Groove</button>
         <button id="moveAsync">Here's a move async</button>
+        <br><br>Loading Status: <span id="status" style="color:blue"></span>
     </p>
 </div>
 <script>
@@ -25,6 +27,10 @@
 
     document.getElementById('moveAsync')
         .addEventListener('click', function () {
+            // synchronous function
+            // store.dispatch(move());
+
+            // async function
             store.dispatch(asyncMove);
         });
 </script>

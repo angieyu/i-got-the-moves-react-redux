@@ -1,7 +1,7 @@
 // middleware begin
 
 
-// middleware end
+// middlewares end
 
 
 var store = Redux.createStore(combineReducer);

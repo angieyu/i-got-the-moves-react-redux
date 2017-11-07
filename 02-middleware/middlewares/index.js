@@ -6,13 +6,13 @@ const logger = function (store) {
             console.log('currentState == ', store.getState());
             console.log('next(action) // action == ', action);
             next(action);
-            console.log('currentState == ', store.getState());
+            console.log('nextState == ', store.getState());
             console.groupEnd('logger');
         }
     }
 };
 
-// second middleware
+// second middlewares
 const crashReporter = function (store) {
     return function (next) {
         return function (action) {
@@ -28,7 +28,7 @@ const crashReporter = function (store) {
     }
 };
 
-// thunk middleware
+// thunk middlewares
 const thunk = function (store) {
     return function (next) {
         return function (action) {
@@ -40,17 +40,4 @@ const thunk = function (store) {
         }
     }
 };
-
-
-var store = Redux.createStore(combineReducer, Redux.applyMiddleware(logger, crashReporter));
-
-function render() {
-    var state = store.getState();
-    document.getElementById('display').innerHTML = state.move;
-}
-
-store.subscribe(render);
-render();
-
-
 

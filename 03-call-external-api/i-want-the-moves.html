@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redux basic example</title>
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <script src="_fakeServerApi/index.js"></script>
+    <script src="actions/index.js"></script>
+    <script src="reducers/index.js"></script>
+    <script src="middlewares/index.js"></script>
+</head>
+<body>
+<div>
+    <p>
+        Gimme one: <span id="display">0</span>
+        <button id="groove">Groove</button>
+        <button id="moveAsync">Here's a move async</button>
+        <br><br>Loading Status: <span id="status" style="color:blue"></span>
+    </p>
+</div>
+<script>
+    document.getElementById('groove')
+        .addEventListener('click', function () {
+            store.dispatch(groove());
+            // groove is the action creator
+        });
+
+
+    document.getElementById('moveAsync')
+        .addEventListener('click', function () {
+            // synchronous function
+            // store.dispatch(move());
+
+            // async function
+            store.dispatch(asyncMove);
+        });
+</script>
+<script src="index.js"></script>
+</body>
+</html>
